@@ -15,6 +15,13 @@ Test: "It will create a prototype to withdraw money."
 Code: account1.withdraw(5);
 Expected Output: account1.amount = 95;
 
+Test: "If the user tries to withdraw more than is in their balance, it withdraws the total current balance."
+code:
+let account1.amount = 100;
+account1.withdraw(120);
+Expected output
+account1.amount = 0;
+
 Describe Account.prototype.deposit()
 
 Test: "It will create a prototype to deposit money."
