@@ -1,6 +1,11 @@
 //Business Logic for Accounts
-function Account()  {
+function Account(accountName, initialDeposit)  {
+  this.name = accountName;
+  this.amount = initialDeposit;
+}
 
+Account.prototype.withdraw = function(amountToWithdraw) {
+  return this.amount - amountToWithdraw; 
 }
 
 
