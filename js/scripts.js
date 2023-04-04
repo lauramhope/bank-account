@@ -5,9 +5,17 @@ function Account(accountName, initialDeposit)  {
 }
 
 Account.prototype.withdraw = function(amountToWithdraw) {
-  return this.amount - amountToWithdraw; 
+  this.amount -= amountToWithdraw; 
+  console.log(this.amount);
 }
 
+Account.prototype.deposit = function(amountToDeposit) {
+  this.amount += amountToDeposit; 
+  console.log(this.amount);
+}
 
+Account.prototype.checkBalance = function (){
+  return this.amount; 
+}
 
 //User Interface Logic
