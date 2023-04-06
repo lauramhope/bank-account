@@ -11,17 +11,17 @@
       <label for="accountName">Name: </label>
       <input type="text" id="accountName" name="accountName">
       <label for="initialDeposit">Initial Deposit: </label>
-      <input type="text" id="initialDeposit" name="initialDeposit">
+      <input type="number" id="initialDeposit" name="initialDeposit">
       <button type="submit" id="add-member" class="btn-primary">Submit</button>
   </form>
   <br>
   <form id="deposit-withdraw">
     <label for="deposit">Deposit Amount: </label>
-    <input type="text" id="deposit" name="deposit">
+    <input type="number" id="deposit" name="deposit" value="0">
     <label for="withdraw">Withdrawal Amount: </label>
-    <input type="text" id="withdraw" name="withdraw">
+    <input type="number" id="withdraw" name="withdraw" value="0">
     <button type="submit" id="make-transaction">Make Transaction</button>
 </form>
-<h2>Current Balance: </h2>
+<h2>Current Balance: <span id="the-balance"></span></h2>
 </body>
 </html>
