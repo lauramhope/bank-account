@@ -1,0 +1,19 @@
+body {
+  padding-left: 20px;
+  padding-top: 20px; 
+  background-image: url("money.jpg");
+  background-position: auto;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
+}
+
+h1 {
+  font-family:Georgia, 'Times New Roman', Times, serif
+}
+
+h3 {
+  font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif
+}
+
+

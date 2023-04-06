@@ -5,35 +5,30 @@ function Account(accountName, initialDeposit)  {
   this.history = [initialDeposit];
 }
 
-Account.prototype.logTransaction = function(newAmount)  {
-  console.log("newAmount =",newAmount,typeof(newAmount));
+Account.prototype.logTransaction = function(newAmount,isDeposit)  {
   if (newAmount !== 0) {
-      this.history.push(newAmount);
+    if(isDeposit) {
+      this.history.push(newAmount + " ↑");
+    } else {
+      this.history.push(newAmount + " ↓")
+    }
   }
 }
 
 Account.prototype.withdraw = function(amountToWithdraw) {
   amountToWithdraw = this.verify(amountToWithdraw);
-  console.log("hi",typeof(this.amount),amountToWithdraw);
   if (amountToWithdraw > this.amount) {
     this.amount -= this.amount;
-    console.log(this.amount);
-    console.log("you are broke!");
   } else {
   this.amount -= amountToWithdraw; 
-  console.log(this.amount);
   }
- // this.history.push(this.amount);
-  // updateHistory(this);
-  this.logTransaction(amountToWithdraw);
+  this.logTransaction(amountToWithdraw,false);
 }
 
 Account.prototype.deposit = function(amountToDeposit) {
   amountToDeposit = this.verify(amountToDeposit);
   this.amount += amountToDeposit; 
-  console.log(this.amount);
-  // updateHistory(this);
-  this.logTransaction(amountToDeposit);
+  this.logTransaction(amountToDeposit,true);
 }
 
 Account.prototype.checkBalance = function (){
@@ -47,27 +42,26 @@ Account.prototype.verify = function (checkVariable) {
   return checkVariable;
 }
 
+//User Interface Logic
 let newAccount;
 
-//User Interface Logic
 function handleFormSubmission(event){
   event.preventDefault();
   const inputtedAccountName = document.querySelector("input#accountName").value;
   const inputtedInitialDeposit = parseInt(document.querySelector("input#initialDeposit").value);
   newAccount = new Account(inputtedAccountName, inputtedInitialDeposit);
-  console.log(newAccount)
   document.querySelector("input#accountName").value = null; 
-  document.querySelector("input#initialDeposit").value = null; 
+  document.querySelector("input#initialDeposit").value = null;
+  updateBalance(newAccount.amount);
 }
 
 function handleNewTransaction(event){
   event.preventDefault();
-  console.log(newAccount);
   const inputtedDeposit = parseInt(document.querySelector("input#deposit").value);
   const inputtedWithdraw = parseInt(document.querySelector("input#withdraw").value);
   newAccount.deposit(inputtedDeposit);
   newAccount.withdraw(inputtedWithdraw);
-  console.log(newAccount);
+  updateBalance(newAccount.amount);
 }
 
 function updateBalance(balance){
