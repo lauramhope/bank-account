@@ -53,6 +53,7 @@ function handleFormSubmission(event){
   document.querySelector("input#accountName").value = null; 
   document.querySelector("input#initialDeposit").value = null;
   updateBalance(newAccount.amount);
+  document.querySelector("span#greeting").innerText = "Hello, " + inputtedAccountName + "!";
 }
 
 function handleNewTransaction(event){
